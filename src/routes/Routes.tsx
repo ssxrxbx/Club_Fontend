@@ -8,18 +8,23 @@ import {
     AdminResourcesRegisterPage,
     AdminUnionPage,
     ClubDetailPage,
+    ClubIntroPage,
     ClubListPage,
+    ClubRegisterPage,
+    EditClubRegisterPage,
     ErrorPage,
     FAQPage,
-    ModifyClubRegisterPage,
-    RegisterClubPage,
+    RecruitNoticePage,
     ResourcesPage,
     ServiceNoticePage,
+    SummaryInfoPage,
     UnionNoticePage,
 } from '@/pages';
 import { RedirectIfAuthenticated } from './RedirectIfAuthenticated';
+import ClubDetailPreview from '@/pages/club-detail-preview/ClubDetailPreview';
 import { AuthGuard } from './AuthGuard';
 import UnionAdminGuard from './UnionAdminGuard';
+import ClubAdminGurad from './ClubAdminGurad';
 
 export default function AppRoutes() {
     return (
@@ -42,6 +47,12 @@ export default function AppRoutes() {
             {/* 자주 묻는 질문 페이지 */}
             <Route path="/faq" element={<FAQPage />} />
 
+            {/* 동아리 등록 및 수정의 미리보기 페이지 */}
+            <Route
+                path="/club-detail-preview/:id"
+                element={<ClubDetailPreview />}
+            />
+
             {/* 로그인됐을 때 로그인 페이지 접근 제한 */}
             <Route path="/admin/login" element={<RedirectIfAuthenticated />}>
                 {/* 로그인 페이지 */}
@@ -49,35 +60,50 @@ export default function AppRoutes() {
             </Route>
 
             {/* 동아리 등록 페이지 */}
-            <Route path="/admin/club/register" element={<RegisterClubPage />} />
+            <Route path="/admin/club/register" element={<ClubRegisterPage />} />
 
             {/* 어드민 접근 권한 필요 -> 권한 없을 때 메인으로 리다이렉트 */}
             <Route path="/admin" element={<AuthGuard />}>
                 {/* 동아리 어드민 */}
-                {/* 총동연, 서비스 관리자, 동아리 대표 모두 접근 가능 */}
-                <Route path="/admin/club">
+                {/* 서비스 관리자, 동아리 대표 접근 가능 */}
+                <Route path="/admin/club/:id" element={<ClubAdminGurad />}>
                     {/* 동아리 어드민 홈*/}
-                    <Route path="/admin/club" element={<AdminClubPage />} />
+                    <Route index element={<AdminClubPage />} />
 
                     {/* 동아리 활동 로그 */}
                     <Route
-                        path="/admin/club/activity"
+                        path="/admin/club/:id/activity"
                         element={<AdminActivityLogPage />}
                     />
                     {/* 동아리 상세 페이지  */}
                     <Route
                         path="/admin/club/:id"
                         element={<AdminClubDetailPage />}
-                    />
+                    >
+                        {/* 상세페이지 섹션 (요약정보, 동아리 소개, 모집안내) */}
+                        <Route
+                            path="/admin/club/:id/summary-info"
+                            element={<SummaryInfoPage />}
+                        />
+                        <Route
+                            path="/admin/club/:id/club-intro"
+                            element={<ClubIntroPage />}
+                        />
+                        <Route
+                            path="/admin/club/:id/recruit-notice"
+                            element={<RecruitNoticePage />}
+                        />
+                    </Route>
+
                     {/* 동아리 등록 정보 수정 페이지 */}
                     <Route
-                        path="/admin/club/modify"
-                        element={<ModifyClubRegisterPage />}
+                        path="/admin/club/:id/register/edit"
+                        element={<EditClubRegisterPage />}
                     />
                 </Route>
 
                 {/* 총동연 어드민 */}
-                {/* 총동연, 서비스 관리자만 접근 가능 */}
+                {/* 총동연, 서비스 관리자 접근 가능 */}
                 <Route path="/admin/union" element={<UnionAdminGuard />}>
                     {/* 총동연 어드민 홈*/}
                     <Route path="/admin/union" element={<AdminUnionPage />} />

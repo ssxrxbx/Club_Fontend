@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { InputField, TopNavigator } from '@/components/Common';
 import Button from '@/components/Common/Button';
 import { loginNavigations } from '@/constants';
-import useAdminLogin from '@/hooks/useAdminLogin';
+import useAdminLogin from '@/hooks/auth/useAdminLogin';
 
 const AdminLoginPage = () => {
     const [navStatus, setNavStatus] = useState<number>(1);
@@ -61,7 +61,7 @@ const AdminLoginPage = () => {
                 </Form>
 
                 {navStatus === 1 && (
-                    <Link to="/admin/register">
+                    <Link to="/admin/club/register">
                         <RegisterButton>동아리 등록하기</RegisterButton>
                     </Link>
                 )}

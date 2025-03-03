@@ -1,18 +1,35 @@
-const navigations = [
+const adminNavigationMenus = [
+    {
+        title: '어드민 페이지',
+        adminType: ['union', 'service'],
+        url: '/admin/union',
+    },
+    {
+        title: '어드민 페이지',
+        adminType: ['club'],
+        url: '/admin/club',
+    },
+];
+
+const navigationMenus = [
     {
         title: '총동연 공지사항',
+        adminType: ['user'],
         url: '/union/notice',
     },
     {
         title: '자료실',
+        adminType: ['user'],
         url: '/resources',
     },
     {
         title: '서비스 공지사항',
+        adminType: ['user'],
         url: '/club/notice',
     },
     {
         title: '자주 묻는 질문',
+        adminType: ['user'],
         url: '/faq',
     },
 ];
@@ -35,16 +52,17 @@ const loginNavigations = [
 ];
 
 const clubCategory = [
-    '봉사분과',
-    '예술분과',
-    '종교분과',
-    '체육분과',
-    '학술교양분과',
-    '연합동아리',
+    { label: '봉사분과', name: 'VOLUNTEER' },
+    { label: '예술분과', name: 'ART' },
+    { label: '체육분과', name: 'SPORTS' },
+    { label: '봉사분과', name: 'RELIGION' },
+    { label: '봉사분과', name: 'ACADEMIC' },
+    { label: '봉사분과', name: 'UNION' },
 ];
 
 export {
-    navigations,
+    adminNavigationMenus,
+    navigationMenus,
     clubDetailNavigations,
     clubDetailRegisterNavigations,
     loginNavigations,
