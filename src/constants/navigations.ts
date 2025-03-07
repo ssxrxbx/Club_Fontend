@@ -12,11 +12,11 @@ const adminNavigationMenus = [
 ];
 
 const navigationMenus = [
-    {
-        title: '총동연 공지사항',
-        adminType: ['user'],
-        url: '/union/notice',
-    },
+    // {
+    //     title: '총동연 공지사항',
+    //     adminType: ['user'],
+    //     url: '/union/notice',
+    // },
     {
         title: '자료실',
         adminType: ['user'],
@@ -46,18 +46,18 @@ const clubDetailRegisterNavigations = [
     { id: 3, nav: '모집안내' },
 ];
 
-const loginNavigations = [
-    { id: 1, nav: '동아리 대표 로그인' },
-    { id: 2, nav: '총동연 로그인' },
-];
+// const loginNavigations = [
+//     { id: 1, nav: '동아리 대표 로그인' },
+//     { id: 2, nav: '총동연 로그인' },
+// ];
 
 const clubCategory = [
     { label: '봉사분과', name: 'VOLUNTEER' },
     { label: '예술분과', name: 'ART' },
+    { label: '종교분과', name: 'RELIGION' },
     { label: '체육분과', name: 'SPORTS' },
-    { label: '봉사분과', name: 'RELIGION' },
-    { label: '봉사분과', name: 'ACADEMIC' },
-    { label: '봉사분과', name: 'UNION' },
+    { label: '학술교양분과', name: 'ACADEMIC' },
+    { label: '연합동아리', name: 'UNION' },
 ];
 
 export {
@@ -65,6 +65,6 @@ export {
     navigationMenus,
     clubDetailNavigations,
     clubDetailRegisterNavigations,
-    loginNavigations,
+    // loginNavigations,
     clubCategory,
 };
